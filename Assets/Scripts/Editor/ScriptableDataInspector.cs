@@ -80,8 +80,8 @@ public class ScriptableDataInspector : Editor {
         SerializedProperty valueProperty = _initialPair.serializedObject.FindProperty("value");
         float viewWidth = EditorGUIUtility.currentViewWidth * 0.5f - 40;
         GUILayout.BeginHorizontal();
-        EditorGUILayout.DelayedTextField(keyProperty, GUIContent.none, GUILayout.Width(viewWidth));
-        EditorGUILayout.DelayedIntField(valueProperty, GUIContent.none, GUILayout.Width(viewWidth));
+        EditorGUILayout.PropertyField(keyProperty, GUIContent.none, GUILayout.Width(viewWidth));
+        EditorGUILayout.PropertyField(valueProperty, GUIContent.none, GUILayout.Width(viewWidth));
         if (GUILayout.Button("Add", GUILayout.Width(50))) {
             _initialPair.serializedObject.ApplyModifiedProperties();
             if (_initialPair.serializableTemplate.key != null && _initialPair.serializableTemplate.key.Length > 0) {

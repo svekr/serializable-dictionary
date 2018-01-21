@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class SerializableDictionaryTemplate<TKey, TValue> : Dictionary<TKey, TValue> {
     [SerializeField]
     public Dictionary<TKey, TValue> dictionary;

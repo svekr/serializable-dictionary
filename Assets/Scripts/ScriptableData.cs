@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CreateAssetMenu(menuName = "ScriptableData Asset")]
-public class ScriptableData : ScriptableObject {
+public class ScriptableData : ScriptableObject, ISerializationCallbackReceiver {
     [SerializeField]
     public string stringProperty;
 
@@ -13,4 +13,16 @@ public class ScriptableData : ScriptableObject {
 
     [SerializeField]
     public SerializableDictionaryStringInt dictionaryProperty = SerializableDictionaryStringInt.New<SerializableDictionaryStringInt>();
+
+    public void OnBeforeSerialize() {
+        if (dictionaryProperty != null) {
+            dictionaryProperty.OnBeforeSerialize();
+        }
+    }
+
+    public void OnAfterDeserialize() {
+        if (dictionaryProperty != null) {
+            dictionaryProperty.OnAfterDeserialize();
+        }
+    }
 }
